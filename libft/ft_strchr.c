@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 19:09:20 by seukim            #+#    #+#             */
-/*   Updated: 2020/02/26 19:09:20 by seukim           ###   ########.fr       */
+/*   Created: 2020/02/27 04:32:59 by seukim            #+#    #+#             */
+/*   Updated: 2020/02/27 04:32:59 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t	i;
-	size_t	s1_end;
+	char	*p1;
+	char	sym;
 
-	i = 0;
-	while (dst[i] && i < size)
-		i++;
-	s1_end = i;
-	while (src[i - s1_end] && i < size - 1)
+	sym = (char)c;
+	p1 = (char*)str;
+	while (*p1 =! '\0')
 	{
-		dst[i] = src[i - s1_end];
-		i++;
+		if (*p1 == sym)
+			return (p1);
+		p1++;
 	}
-	if (s1_end < size)
-		dst[i] = '\0';
-	return (s1_end + ft_strlen(src));
+	return ('\0');
 }

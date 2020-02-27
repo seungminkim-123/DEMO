@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 19:09:20 by seukim            #+#    #+#             */
-/*   Updated: 2020/02/26 19:09:20 by seukim           ###   ########.fr       */
+/*   Created: 2020/02/25 21:14:30 by seukim            #+#    #+#             */
+/*   Updated: 2020/02/25 21:14:30 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_bzero(void *prt, size_t n)
 {
-	size_t	i;
-	size_t	s1_end;
+	unsigned char *p1;
+	int i;
 
-	i = 0;
-	while (dst[i] && i < size)
-		i++;
-	s1_end = i;
-	while (src[i - s1_end] && i < size - 1)
+	p1 = (unsigned char*)prt;
+	while (n > 0)
 	{
-		dst[i] = src[i - s1_end];
-		i++;
+		*p1++ = '\0';
+		n--;
 	}
-	if (s1_end < size)
-		dst[i] = '\0';
-	return (s1_end + ft_strlen(src));
 }
