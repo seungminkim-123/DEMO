@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 19:12:44 by seukim            #+#    #+#             */
-/*   Updated: 2020/02/28 19:12:44 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/03 04:13:08 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/03 04:13:08 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t		size_s;
-	char		*newstring;
+	unsigned int num;
 
-	if (!s1 || !set)
-		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	size_s = ft_strlen(s1);
-	while (size_s && ft_strchr(set, s1[size_s]))
-		size_s--;
-	newstring = ft_substr((char*)s1, 0, size_s + 1);
-	return (newstring);
+	if (n < 0)
+	{
+		num = -1 * n;
+		ft_putchar_fd('-', fd);
+	}
+	else
+		num = n;
+	if (num >= 10)
+		ft_putnbr_fd(num / 10, fd);
+	ft_putchar_fd((num % 10) + '0', fd);
 }

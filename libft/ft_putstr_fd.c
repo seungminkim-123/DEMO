@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atio.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 22:18:02 by seukim            #+#    #+#             */
-/*   Updated: 2020/02/27 22:18:02 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/03 03:56:51 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/03 03:56:51 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi(const char *str)
+void ft_putstr_fd(char *s, int fd)
 {
-	int i;
-	int value;
-	int result;
-
-	value = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-			i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (s)
 	{
-		if (str[i] == '-')
-			value = -1;
-		i++;
+		while(*s != '\0')
+		{
+			write(fd, s, 1);
+			s++;
+		}
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] -'0');
-		i++;
-	}
-	return ((int)result * value);
 }

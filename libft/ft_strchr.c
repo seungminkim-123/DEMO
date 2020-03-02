@@ -19,11 +19,13 @@ char	*ft_strchr(const char *str, int c)
 
 	sym = (char)c;
 	p1 = (char*)str;
-	while (*p1 =! '\0')
+	while (*p1 != '\0')
 	{
 		if (*p1 == sym)
 			return (p1);
 		p1++;
 	}
-	return ('\0');
+	if (*p1 == sym)
+		return(p1);
+	return (NULL);
 }
