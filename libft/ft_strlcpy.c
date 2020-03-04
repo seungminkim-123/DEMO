@@ -16,7 +16,6 @@ size_t ft_strlcpy(char *dest, const char *src, size_t n)
 {
 	unsigned int i;
 	unsigned int j;
-	unsigned int count;
 
 	j = 0;
 	while(*src != '\0')
