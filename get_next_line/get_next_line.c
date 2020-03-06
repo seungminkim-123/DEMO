@@ -12,6 +12,23 @@
 
 #include "get_next_line.h"
 
+int get_next_line(int fd, char **line)
+{
+   char static buf[BUFF_SIZE];
+   char *str;
+   int i;
+   int i
+
+   i = 0;
+   str = *line;
+   if (fd == -1 || line == '\0')
+      return (-1);
+   while(read(fd, buf, BUFF_SIZE) > 0)
+   {
+
+   }
+
+}
 
 int main()
 {
