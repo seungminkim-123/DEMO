@@ -4,7 +4,7 @@
 
 int main()
 {
-	char	buff[22];
+	char	buff[1000];
 	int    fd;
 	int   res;
 	char  *str;
@@ -12,11 +12,13 @@ int main()
 	if (( fd = open( "./test.txt", O_RDONLY)))
 	{
 		str = buff[0];
-		res = read( fd, buff,7);
+		res = read( fd, buff,300);
 		printf("%s\n",buff);
-		res = read( fd, buff,7);
+		printf("%d\n",res);
+		res = read( fd, buff,300);
 		printf("%s\n",buff);
-		res = read( fd, buff,7);
+		printf("%d\n",res);
+		res = read( fd, buff,300);
 		printf("%s\n",buff);
 		printf("%d\n",res);
 	}
