@@ -16,7 +16,7 @@ char *ft_strnstr(const char *dest, const char *src, size_t n)
 {
 	char *p1;
 	char *p2;
-	int i;
+	size_t i;
 
 	p1 = (char *)dest;
 	p2 = (char *)src;
@@ -27,8 +27,11 @@ char *ft_strnstr(const char *dest, const char *src, size_t n)
 	{
 		p1 = (char *)dest;
 		while (*p1 != '\0' && *p1++ == *p2++)
+		{
+			i++;
 			if (n == i)
 				return (p1 - i);
+		}
 		p2 = (char *)src;
 		dest++;
 	}
