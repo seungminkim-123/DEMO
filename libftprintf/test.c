@@ -15,8 +15,8 @@
 
 int main()
 {
-	int a;
+	char a;
 
-	a = 2;
-	printf("asd1b23",3);
+	a = 68;
+	printf("%C",a);
 }
