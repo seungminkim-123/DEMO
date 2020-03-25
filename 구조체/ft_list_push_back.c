@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 23:31:24 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/14 23:31:24 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/25 00:05:52 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/25 00:05:52 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "ft_list.h"
 
-
-void	ft_putchar(char c)
+void	ft_list_push_back(t_list **begin_list, void *date)
 {
-	write(1, &c, 1);
+	t_list *list;
+
+	if (*begin_list == 0)
+		list = ft_create_elem(date);
+	else
+		ft_list_push_back(&((*begin_list) ->next), date));
 }
-
-int check_option(char *format, int i)
-{
-
-}
-
-int check(char *format)
-{
-	int i;
-
-	i = 0;
-	while (format[i] != '\0')
-	{
-		ft_putchar(format[i]);
-		while (format[i] == '%')
-			{
-				if (is_flag(format[i]))
-					flaginsertindex(format[i])
-			}
-		i++;
-	}
-	return (0);
-
-}
-

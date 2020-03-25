@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 23:31:24 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/14 23:31:24 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/25 15:41:33 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/25 15:41:33 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "ft_list.h"
 
-
-void	ft_putchar(char c)
+void	ft_list_reverse(t_list **begin_list)
 {
-	write(1, &c, 1);
-}
+	t_list *next;
+	t_list *previous;
+	t_list *current;
 
-int check_option(char *format, int i)
-{
-
-}
-
-int check(char *format)
-{
-	int i;
-
-	i = 0;
-	while (format[i] != '\0')
+	if (*begin_list == 0)
+		return ;
+	current = *begin_list;
+	while (current != NULL)
 	{
-		ft_putchar(format[i]);
-		while (format[i] == '%')
-			{
-				if (is_flag(format[i]))
-					flaginsertindex(format[i])
-			}
-		i++;
+		next = current ->next;
+		current ->next = previous;
+		previous = current;
+		current = next;
 	}
-	return (0);
-
 }
-

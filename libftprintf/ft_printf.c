@@ -33,14 +33,19 @@ struct str_info{
 	int lens;
 	int preci;
 	char speci;
-}
+};
+
 int		ft_printf(const char *format, ...)
 {
+	va_list ap;
 	int i;
+	struct str_info info;
+
 	i = 0;
 	if (!format)
-		return (0);
+		return (-1);
 	i = check(format);
+	va_start(format, )
 	return (0);
 }
 

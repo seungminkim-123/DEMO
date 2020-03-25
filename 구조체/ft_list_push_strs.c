@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 23:31:24 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/14 23:31:24 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/25 14:45:56 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/25 14:45:56 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "ft_list.h"
 
-
-void	ft_putchar(char c)
+t_list	*ft_list_push_strs(int size, char **strs)
 {
-	write(1, &c, 1);
+	t_list	*list;
+
+	if (size == 0)
+		return (0);
+	list = ft_create_elem((void *)strs[size - 1]);
+	list->next = ft_list_push_strs(size - 1, strs);
+	return (list);
 }
-
-int check_option(char *format, int i)
-{
-
-}
-
-int check(char *format)
-{
-	int i;
-
-	i = 0;
-	while (format[i] != '\0')
-	{
-		ft_putchar(format[i]);
-		while (format[i] == '%')
-			{
-				if (is_flag(format[i]))
-					flaginsertindex(format[i])
-			}
-		i++;
-	}
-	return (0);
-
-}
-

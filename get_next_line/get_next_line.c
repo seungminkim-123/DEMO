@@ -10,33 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "get_next_line.h"
 
-size_t	ft_strlen(const char *src)
+int	ft_strlen(const char *src)
 {
-	size_t len;
+	int len;
 
 	len = 0;
 	while (*src++ != '\0')
 		len++;
 	return (len);
-}
-
-
-void	 ft_strncpy(char *s1, char *s2, int res)
-{
-	int i;
-
-	i = 0;
-	while (res)
-	{
-		s1[i] = s2[i];
-		i++;
-		res--;
-	}
-	s1[i] = '\0';
 }
 
 char *ft_strdup(const char *str1)
@@ -55,6 +38,27 @@ char *ft_strdup(const char *str1)
 		p1++;
 		i++;
 		str1_len--;
+	}
+	p1[i] = '\0';
+	return (p1);
+}
+
+char	*ft_substr(char const *str1, unsigned int start, size_t len)
+{
+	size_t str1_len;
+	int i;
+	char *p1;
+
+	i = 0;
+	str1_len = ft_strlen(str1);
+	if ((str1_len < start + len) || (str1[0] == '\0'))
+		return (NULL);
+	p1 = (char*)malloc(sizeof(char) * len + 1);
+	while(len > 0)
+	{
+		p1[i] = str1[start++];
+		i++;
+		len--;
 	}
 	p1[i] = '\0';
 	return (p1);
@@ -79,6 +83,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 	return (p2);
 }
 
+
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -94,7 +99,7 @@ char	*ft_strchr(const char *s, int c)
 
 int getline(char *save, char **line)
 {
-	char tmp;
+	char *tmp;
 	int i;
 
 	i = 0;
@@ -102,17 +107,16 @@ int getline(char *save, char **line)
 		i++;
 	if (save[i] == '\n')
 	{
-		*line = ft_strsub(save, 0, i);
+		*line = ft_substr(save, 0, i);
 		tmp = ft_strdup(save[i + 1]);
 		free(save);
 		save = tmp;
 	}
 	else if(save[i] == '\0')
 	{
-		*line = ft_strsub(save, 0, i);
+		*line = ft_substr(save, 0, i);
 	}
 	return (1);
-
 }
 
 int output(char *save, int res, char **line)
@@ -120,9 +124,9 @@ int output(char *save, int res, char **line)
 	if (res < 0)
 		return (-1);
 	if (res == 0 && save == NULL)
-		return (0)
+		return (0);
 	if (res > 0)
-		return (getline(save,line));)
+		return (getline(save,line));
 }
 
 int		get_next_line(int fd, char **line)
@@ -137,7 +141,7 @@ int		get_next_line(int fd, char **line)
 	while ((res = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[res] = '\0';
-		if (save = NULL)
+		if (save == NULL)
 			save = ft_strdup(buff);
 		else
 		{
@@ -145,10 +149,10 @@ int		get_next_line(int fd, char **line)
 			free(save);
 			save = tmp;
 		}
-		if (ft_strchr(save, '/n'))
+		if (ft_strchr(save, 10))
 			break ;
 	}
-	return (output);
+	return (output(save, res, line));
 }
 
 int main()
@@ -162,5 +166,6 @@ int main()
 	if (( fd = open( "./test.txt", O_RDONLY)))
 	{
 		get_next_line(fd, line);
+	}
 	return 0;
 }

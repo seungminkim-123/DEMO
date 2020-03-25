@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 23:31:24 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/14 23:31:24 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/25 15:27:43 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/25 15:27:43 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "ft_list.h"
 
-
-void	ft_putchar(char c)
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 {
-	write(1, &c, 1);
-}
-
-int check_option(char *format, int i)
-{
-
-}
-
-int check(char *format)
-{
-	int i;
-
-	i = 0;
-	while (format[i] != '\0')
+	if (begin_list ->next != 0)
 	{
-		ft_putchar(format[i]);
-		while (format[i] == '%')
-			{
-				if (is_flag(format[i]))
-					flaginsertindex(format[i])
-			}
-		i++;
+		ft_list_clear(begin_list -> next, free_fct);
 	}
-	return (0);
-
+	(*free_fct)(begin_list ->date);
+	free(begin_list);
 }
-
