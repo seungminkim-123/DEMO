@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   flag_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 00:30:51 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/27 00:30:51 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/28 22:55:19 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/28 22:55:19 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_printf.h"
 
-void	ft_lstiter(t_list &lst, void (*f)(void *))
+void	flags_int(va_list args, int *p)
 {
+	int output;
 
-	t_list *next;
-
-	if (lst != NULL)
-	{
-		next = lst;
-		while (2)
-		{
-			(*f)(next->content);
-			next = next->next;
-			if (next == NULL)
-				return ;
-		}
-	}
+	output = va_arg(args, int);
+	ft_putnbr(output, p);
 }

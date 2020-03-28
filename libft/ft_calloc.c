@@ -15,17 +15,17 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void *p1;
-	size_t len;
+	size_t len1;
 
-	len = count * size;
-	p1 = malloc(len);
+	len1 = count * size;
+	p1 = malloc(len1);
 	if (p1 == 0)
 		return (NULL);
-	while (len > 0)
+	while (len1 > 0)
 	{
 		*((char *)p1) = 0;
 		p1++;
-		len--;
+		len1--;
 	}
 	return (0);
 }

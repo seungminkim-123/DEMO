@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 00:30:51 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/27 00:30:51 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/28 18:39:17 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/28 18:39:17 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_printf.h"
 
-void	ft_lstiter(t_list &lst, void (*f)(void *))
+int		ft_printf(const char *str, ...)
 {
+	va_list args;
+	int		i;
+	int		p;
 
-	t_list *next;
-
-	if (lst != NULL)
+	i = 0;
+	p = 0;
+	va_start(args, str);
+	while (str[i] != '\0')
 	{
-		next = lst;
-		while (2)
-		{
-			(*f)(next->content);
-			next = next->next;
-			if (next == NULL)
-				return ;
-		}
+		if (str[i] == '%')
+			parse_flags(&i, str, args, &p);
+		else
+			write(1, &str[i], 1);
+		i++;
 	}
+	va_end(args);
+	return (p);
 }

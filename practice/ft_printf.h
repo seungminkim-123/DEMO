@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 00:30:51 by seukim            #+#    #+#             */
-/*   Updated: 2020/03/27 00:30:51 by seukim           ###   ########.fr       */
+/*   Created: 2020/03/28 18:39:52 by seukim            #+#    #+#             */
+/*   Updated: 2020/03/28 18:39:52 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_PRINTF_H
+#define FT_PRINTF_H
 
-void	ft_lstiter(t_list &lst, void (*f)(void *))
-{
+#include <stdlib.h>
+#include <stdarg.h>
 
-	t_list *next;
 
-	if (lst != NULL)
-	{
-		next = lst;
-		while (2)
-		{
-			(*f)(next->content);
-			next = next->next;
-			if (next == NULL)
-				return ;
-		}
-	}
-}
+#endif
