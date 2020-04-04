@@ -19,6 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 
 	p1 = (unsigned char *)dest;
 	p2 = (unsigned char *)src;
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	if (p1 > p2)
 	{
 		p1 = p1 + len;
@@ -28,7 +30,7 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	}
 	else
 	{
-		while (len--)
+		while ((int)len--)
 			*p1++ = *p2++;
 	}
 	return (dest);

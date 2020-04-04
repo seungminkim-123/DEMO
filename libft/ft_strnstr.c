@@ -21,19 +21,21 @@ char *ft_strnstr(const char *dest, const char *src, size_t n)
 	p1 = (char *)dest;
 	p2 = (char *)src;
 	i = 0;
-	if (*src == 0)
-		return ((char *)dest);
-	while(*dest != '\0')
+	if (src == 0)
+		return (dest);
+	while(*dest != '\0' && n > 0)
 	{
 		p1 = (char *)dest;
+		i = 0;
 		while (*p1 != '\0' && *p1++ == *p2++)
 		{
 			i++;
-			if (n == i)
+			if (ft_strlen(src) == i)
 				return (p1 - i);
 		}
 		p2 = (char *)src;
 		dest++;
+		n--;
 	}
 	return ('\0');
 }

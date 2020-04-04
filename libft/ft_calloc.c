@@ -27,5 +27,5 @@ void	*ft_calloc(size_t count, size_t size)
 		p1++;
 		len1--;
 	}
-	return (0);
+	return (p1);
 }

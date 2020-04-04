@@ -54,5 +54,6 @@ char	*ft_itoa(int n)
 		p1[len-- - 1] = n % 10 + 48;
 		n = n / 10;
 	}
+	p1[itoa_length(n)] = '\0';
 	return (p1);
 }

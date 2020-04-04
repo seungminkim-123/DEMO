@@ -20,7 +20,7 @@ void	ft_bzero(void *prt, size_t n)
 	p1 = (unsigned char*)prt;
 	while (n > 0)
 	{
-		*p1++ = '\0';
+		*p1++ = '0';
 		n--;
 	}
 }
