@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 00:36:44 by seukim            #+#    #+#             */
-/*   Updated: 2020/02/28 00:36:44 by seukim           ###   ########.fr       */
+/*   Created: 2020/04/07 03:59:42 by seukim            #+#    #+#             */
+/*   Updated: 2020/04/07 03:59:42 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int		ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c + 32);

@@ -24,8 +24,8 @@ void		*ft_calloc(size_t count, size_t size)
 	while (len1 > 0)
 	{
 		*((char *)p1) = 0;
-		p1++;
 		len1--;
+		p1++;
 	}
 	return (p1);
 }
