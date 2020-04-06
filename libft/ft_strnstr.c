@@ -12,18 +12,18 @@
 
 #include "libft.h"
 
-char *ft_strnstr(const char *dest, const char *src, size_t n)
+char	*ft_strnstr(const char *dest, const char *src, size_t n)
 {
-	char *p1;
-	char *p2;
-	size_t i;
+	char	*p1;
+	char	*p2;
+	size_t	i;
 
 	p1 = (char *)dest;
 	p2 = (char *)src;
 	i = 0;
 	if (src == 0)
-		return (dest);
-	while(*dest != '\0' && n > 0)
+		return ((char)dest);
+	while (*dest != '\0' && n > 0)
 	{
 		p1 = (char *)dest;
 		i = 0;

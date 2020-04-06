@@ -14,9 +14,9 @@
 
 char	*ft_substr(char const *str1, unsigned int start, size_t len)
 {
-	size_t str1_len;
-	int i;
-	char *p1;
+	size_t		str1_len;
+	int			i;
+	char		*p1;
 
 	i = 0;
 	str1_len = ft_strlen(str1);

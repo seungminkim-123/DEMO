@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	int	itoa_length(int n)
+static	int		itoa_length(int n)
 {
 	int len;
 
@@ -37,6 +37,7 @@ char	*ft_itoa(int n)
 	len = itoa_length(n);
 	if(!(p1 = (char *)malloc(sizeof(p1) * len + 1)))
 		return (NULL);
+	p1[itoa_length(n)] = '\0';
 	if (n == 0)
 		p1[0] = '0';
 	if (n < 0)
@@ -54,6 +55,5 @@ char	*ft_itoa(int n)
 		p1[len-- - 1] = n % 10 + 48;
 		n = n / 10;
 	}
-	p1[itoa_length(n)] = '\0';
 	return (p1);
 }

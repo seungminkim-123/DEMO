@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static void	ft_clear(char **array, int n)
+static void		ft_clear(char **array, int n)
 {
-	int index;
+	int			index;
 
 	index = 0;
 	while (index < n)
@@ -22,9 +22,9 @@ static void	ft_clear(char **array, int n)
 	free(array);
 }
 
-static char	*ft_strncpy(char *dest, const char *src, size_t len)
+static char		*ft_strncpy(char *dest, const char *src, size_t len)
 {
-	char *final;
+	char		*final;
 
 	final = dest;
 	while (*src != 0 && len > 0)
@@ -40,10 +40,10 @@ static char	*ft_strncpy(char *dest, const char *src, size_t len)
 	return (final);
 }
 
-static void	*ft_memalloc(size_t size)
+static void		*ft_memalloc(size_t size)
 {
-	void *dest;
-	char *clean;
+	void		*dest;
+	char		*clean;
 
 	dest = malloc(size);
 	clean = dest;
@@ -64,7 +64,7 @@ static void	*ft_memalloc(size_t size)
 
 static int		count_str(char *s1, char c)
 {
-	int		n_str;
+	int			n_str;
 
 	n_str = 0;
 	while (*s1)
@@ -79,15 +79,15 @@ static int		count_str(char *s1, char c)
 	return (n_str);
 }
 
-char	**ft_split(char *s1, char c)
+char		**ft_split(char *s1, char c)
 {
 	char	**res;
-	int	i;
-	int	k;
+	int		i;
+	int		k;
 
 	k = 0;
 	i = 0;
-	if (!(res = (char**)malloc(sizeof(char*) * count_str(s1,c)+ 1)))
+	if (!(res = (char**)malloc(sizeof(char*) * count_str(s1, c)+ 1)))
 		return (NULL);
 	while (*s1 != 0)
 	{

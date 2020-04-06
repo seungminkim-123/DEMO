@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+char		*ft_strrchr(const char *str, int c)
 {
-	char *p1;
-	char sym;
+	char	*p1;
+	char	sym;
 
 	p1 = (char*)str + ft_strlen(str);
 	sym = (char)c;

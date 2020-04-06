@@ -14,9 +14,9 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	unsigned char *p1;
-	unsigned char *p2;
-	int i;
+	unsigned char	*p1;
+	unsigned char	*p2;
+	size_t 			i;
 
 	i = 0;
 	p1 = (unsigned char*)dest;
