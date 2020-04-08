@@ -11,14 +11,14 @@ int main()
 
 	if (( fd = open( "./test.txt", O_RDONLY)))
 	{
-		str = buff[0];
-		res = read( fd, buff,300);
+		str = &buff[0];
+		res = read( fd, buff,3);
 		printf("%s\n",buff);
 		printf("%d\n",res);
-		res = read( fd, buff,300);
+		res = read( fd, buff,3);
 		printf("%s\n",buff);
 		printf("%d\n",res);
-		res = read( fd, buff,300);
+		res = read( fd, buff,3);
 		printf("%s\n",buff);
 		printf("%d\n",res);
 	}
