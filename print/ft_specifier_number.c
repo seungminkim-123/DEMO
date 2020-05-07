@@ -33,7 +33,7 @@ int		ft_putstr(char *str, int *printlen)
 	return (0);
 }
 
-static	int		itoa_length(int n)
+int		itoa_length(int long n)
 {
 	int		len;
 
@@ -48,7 +48,7 @@ static	int		itoa_length(int n)
 	return (len);
 }
 
-char	*ft_itoa(size_t n)
+char	*ft_itoa(int long n)
 {
 	char	*p1;
 	int		len;
@@ -58,7 +58,10 @@ char	*ft_itoa(size_t n)
 		return (NULL);
 	p1[itoa_length(n)] = '\0';
 	if (n == 0)
+	{
 		p1[0] = '0';
+		return (p1);
+	}
 	if (n < 0)
 	{
 		if (n == -2147483648)
@@ -115,10 +118,17 @@ char	*ft_printf_strjoin(char *str, int i)
 	return (p2);
 }
 
-void	ft_check_precisionstar(t_flag_info *flaginfo)
+int	ft_check_precisionstar(t_flag_info *flaginfo)
 {
 	if (flaginfo->starprecision)
+	{
 		flaginfo->precision = va_arg(flaginfo->args, int);
+		if (flaginfo->precision < 0)
+		{
+			flaginfo->precision = 0;
+			return 0;
+		}
+	}
 	if (flaginfo->dot)
 	{
 		flaginfo->zero = 0;
@@ -145,6 +155,8 @@ void	ft_print_number(t_flag_info *flaginfo, char *p1, int number,
 	{
 		ft_putchar('-',printlen);
 		flaginfo->width--;
+		if (flaginfo->width - ft_strlen(p1) == 1)
+			ft_putchar('0', printlen);
 	}
 	while (flaginfo->width - ft_strlen(p1) > 1)
 	{
@@ -176,7 +188,6 @@ void	ft_print_number(t_flag_info *flaginfo, char *p1, int number,
 int		ft_specifier_number(t_flag_info	*flaginfo, int *printlen)
 {
 	int number;
-	int		i;
 	char *p1;
 
 	ft_check_widthstar(flaginfo);
@@ -185,6 +196,12 @@ int		ft_specifier_number(t_flag_info	*flaginfo, int *printlen)
 	p1 = ft_itoa(number);
 	if ((flaginfo->precision - ft_strlen(p1)) > 0)
 		p1 = ft_printf_strjoin(p1, flaginfo->precision - ft_strlen(p1));
+	if (flaginfo->precision == 0 && number == 0 && flaginfo->dot)
+	{
+		while (flaginfo->width--)
+			ft_putchar(' ', printlen);
+		return (0);
+	}
 	if (flaginfo->minus)
 	{
 		if (number < 0)
@@ -192,15 +209,22 @@ int		ft_specifier_number(t_flag_info	*flaginfo, int *printlen)
 		ft_putstr(p1, printlen);
 		if (flaginfo->width)
 			ft_number_width(flaginfo->width, ft_strlen(p1), number, printlen);
-		return (1);
+		return (0);
 	}
 	if (!(flaginfo->minus) && flaginfo->width > ft_strlen(p1) + 1)
 		ft_print_number(flaginfo, p1, number, printlen);
 	else
 	{
+		if ((flaginfo->width - ft_strlen(p1)) == 1 && number >= 0)
+		{
+			if(flaginfo->zero)
+				ft_putchar('0', printlen);
+			else
+				ft_putchar(' ', printlen);
+		}
 		if (number < 0)
 			ft_putchar('-', printlen);
 		ft_putstr(p1, printlen);
 	}
-	return (i);
+	return (1);
 }

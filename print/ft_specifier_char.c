@@ -36,7 +36,7 @@ void		ft_width(int width, int minus, int zero, int *printlen)
 	}
 }
 
-void	ft_specifier_char(t_flag_info *flaginfo, int *printlen)
+int		ft_specifier_char(t_flag_info *flaginfo, int *printlen)
 {
 	char c;
 
@@ -47,4 +47,5 @@ void	ft_specifier_char(t_flag_info *flaginfo, int *printlen)
 	ft_width(flaginfo->width, 1, flaginfo->zero, printlen);
 	if (!(flaginfo->minus))
 		ft_putchar(c, printlen);
+	return (1);
 }

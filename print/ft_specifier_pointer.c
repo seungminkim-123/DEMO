@@ -39,10 +39,37 @@ char	*ft_count_hex(unsigned long long number, unsigned long long number2)
 	count = 0;
 	if (number == 0)
 	{
-		if (!(p1 = (char*)malloc(sizeof(char) * count + 1)))
+		if (!(p1 = (char*)malloc(sizeof(char) * count + 2)))
 			return (NULL);
 		p1[0] = '0';
 		p1[1] = '\0';
+		return (p1);
+	}
+	while (1)
+	{
+		if (number == 0)
+			break ;
+		number = number / 16;
+		count++;
+	}
+	if (!(p1 = (char *)malloc(sizeof(char) * count + 1)))
+		return (NULL);
+	ft_specifier_hex(number2, count, p1);
+	p1[count] = '\0';
+	return (p1);
+}
+
+char	*ft_count_pointer(unsigned long long number, unsigned long long number2)
+{
+	int		count;
+	char	*p1;
+
+	count = 0;
+	if (number == 0)
+	{
+		if (!(p1 = (char*)malloc(sizeof(char) * count + 1)))
+			return (NULL);
+		p1[0] = '\0';
 		return (p1);
 	}
 	while (1)
@@ -67,7 +94,12 @@ int		ft_specifier_pointer(t_flag_info *flaginfo, int *printlen)
 	ft_check_widthstar(flaginfo);
 	ft_check_precisionstar(flaginfo);
 	number = va_arg(flaginfo->args, unsigned long);
-	p1 = ft_count_hex(number, number);
+	if (!(flaginfo->dot) || !(number == 0))
+		p1 = ft_count_pointer(number, number);
+	else
+		p1 = ft_strdup("0");
+	if (flaginfo->precision > (ft_strlen(p1)))
+		p1 = ft_printf_strjoin(p1, flaginfo->precision - ft_strlen(p1));
 	if (flaginfo->minus)
 	{
 		ft_putstr("0x", printlen);
@@ -79,5 +111,5 @@ int		ft_specifier_pointer(t_flag_info *flaginfo, int *printlen)
 		ft_putstr("0x", printlen);
 		ft_putstr(p1, printlen);
 	}
-	return (0);
+	return (1);
 }

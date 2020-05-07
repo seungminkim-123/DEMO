@@ -54,7 +54,7 @@ char	*ft_count_bighex(unsigned long long number, unsigned long long number2);
 int		ft_specifier_bighexa(t_flag_info *flaginfo, int *printlen);
 void	ft_check_widthstar(t_flag_info *flaginfo);
 void	ft_width(int width, int minus, int zero, int *printlen);
-void	ft_specifier_char(t_flag_info *flaginfo, int *printlen);
+int		ft_specifier_char(t_flag_info *flaginfo, int *printlen);
 int		ft_specifier_hexa(t_flag_info *flaginfo, int *printlen);
 void	ft_hex_width(int width, int minus, int *printlen,
 			t_flag_info *flaginfo);
@@ -62,29 +62,22 @@ int		ft_specifier_number(t_flag_info	*flaginfo, int *printlen);
 void	ft_print_number(t_flag_info *flaginfo, char *p1, int number,
 			int *printlen);
 void	ft_number_width(int width, int minus, int number, int *printlen);
-void	ft_check_precisionstar(t_flag_info *flaginfo);
+int		ft_check_precisionstar(t_flag_info *flaginfo);
 char	*ft_printf_strjoin(char *str, int i);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_itoa(size_t n);
-static	int		itoa_length(int n);
+char	*ft_itoa(int long n);
+int		itoa_length(int long n);
 int		ft_putstr(char *str, int *printlen);
 void	ft_putchar_number(char c, int *printlen);
-int		ft_specifier_persentage(t_flag_info *flaginfo, int *printlen);
+int		ft_specifier_persentage(t_flag_info *flaginfo ,int *printlen);
 int		ft_specifier_pointer(t_flag_info *flaginfo, int *printlen);
 char	*ft_count_hex(unsigned long long number, unsigned long long number2);
 char	*ft_specifier_hex(unsigned long long number, int count, char *p1);
 int		ft_specifier_string(t_flag_info	*flaginfo, int *printlen);
-char	*ft_set_stringprecision(t_flag_info *flaginfo, char *p1, int *printlen);
+char	*ft_set_stringprecision(t_flag_info *flaginfo, char *p1);
 char	*ft_strdup(const char *str1);
 int		ft_specifier_unint(t_flag_info *flaginfo, int *printlen);
-
-
-
-
-
-
-
-
-
+char	*ft_itoa_u(unsigned int n);
+int		itoa_length_u(unsigned int n);
 
 #endif

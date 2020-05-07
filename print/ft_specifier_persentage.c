@@ -12,8 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_specifier_persentage(t_flag_info *flaginfo, int *printlen)
+int		ft_specifier_persentage(t_flag_info *flaginfo ,int *printlen)
 {
-	ft_putchar('%', printlen);
-	return (0);
+	ft_check_widthstar(flaginfo);
+	if (flaginfo->minus)
+		ft_putchar('%', printlen);
+	ft_width(flaginfo->width, 1, flaginfo->zero, printlen);
+	if (!(flaginfo->minus))
+		ft_putchar('%', printlen);
+	return (1);
 }

@@ -70,14 +70,16 @@ int		ft_specifier_bighexa(t_flag_info *flaginfo, int *printlen)
 	p1 = ft_count_bighex(number, number);
 	if ((flaginfo->precision - ft_strlen(p1)) > 0)
 		p1 = ft_printf_strjoin(p1, flaginfo->precision - ft_strlen(p1));
-	if (flaginfo->minus)
+	if (flaginfo->precision == 0 && number == 0 && flaginfo->dot)
 	{
-		ft_putstr(p1, printlen);
+		while (flaginfo->width--)
+			ft_putchar(' ', printlen);
+		return (0);
 	}
+	if (flaginfo->minus)
+		ft_putstr(p1, printlen);
 	ft_hex_width(flaginfo->width, ft_strlen(p1), printlen, flaginfo);
 	if (!(flaginfo->minus))
-	{
 		ft_putstr(p1, printlen);
-	}
-	return (0);
+	return (1);
 }
